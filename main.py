@@ -1,7 +1,17 @@
 from random import randint
+from graphic_arts.start_game_banner import run_screensaver
 
 
 def attack(char_name: str, char_class: str) -> str:
+    """Calc damage func.
+
+    Attack power randomly procs depending on char_class.
+    Function takes two arguments: str name and  str class.
+
+    Typical usage:
+
+      attack('name','warrior')
+    """
     if char_class == 'warrior':
         return (f'{char_name} нанёс урон противнику равный '
                 f'{5 + randint(3, 5)}'
@@ -17,6 +27,15 @@ def attack(char_name: str, char_class: str) -> str:
 
 
 def defence(char_name: str, char_class: str) -> str:
+    """Blocking damage func.
+
+    This function randomly blocking damage depending on your class.
+    Function takes two arguments: str name and str class.
+
+    typical usage:
+
+      defence('name','warrior')
+    """
     if char_class == 'warrior':
         return f'{char_name} блокировал {10 + randint(5, 10)} урона'
     if char_class == 'mage':
@@ -26,6 +45,15 @@ def defence(char_name: str, char_class: str) -> str:
 
 
 def special(char_name: str, char_class: str) -> str:
+    """"Calculate special skill func.
+
+    This function gives special skill to classes. Skill depending on
+    your class. Function takes 2 arguments: str name and str class
+
+    typical usage:
+
+      special('name', 'warrior')
+    """
     if char_class == 'warrior':
         return (f'{char_name} применил специальное умение «Выносливость '
                 f'{80 + 25}»')
@@ -38,6 +66,14 @@ def special(char_name: str, char_class: str) -> str:
 
 
 def start_training(char_name: str, char_class: str) -> str:
+    """Training game start func.
+
+    This function enter you in console minigame with optional commands:
+    -'attack' command that causes attack function
+    -'defence' command that causes defence function
+    -'special' command that causes special function
+    -'skip' command that stops minigame
+    """
     if char_class == 'warrior':
         print(f'{char_name}, ты Воитель — отличный боец ближнего боя.')
     if char_class == 'mage':
@@ -62,6 +98,11 @@ def start_training(char_name: str, char_class: str) -> str:
 
 
 def choice_char_class() -> str:
+    """Fucntion that allows you to choose class.
+
+    Function waiting for one of the three possible inputs.
+    Depending on this input function returns class info
+    """
     approve_choice: str = ''
     char_class: str = ''
     while approve_choice != 'y':
@@ -83,7 +124,8 @@ def choice_char_class() -> str:
     return char_class
 
 
-def main():
+if __name__ == '__main__':
+    run_screensaver()
     print('Приветствую тебя, искатель приключений!')
     print('Прежде чем начать игру...')
     char_name: str = input('...назови себя: ')
